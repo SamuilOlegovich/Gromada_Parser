@@ -1,4 +1,3 @@
-// test comment
 public class Address {
     private int index;              // индекс
     private String phone;           // телефон
