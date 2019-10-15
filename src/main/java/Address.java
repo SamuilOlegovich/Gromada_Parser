@@ -1,4 +1,4 @@
-// test comment
+// test comment updated
 public class Address {
     private int index;              // индекс
     private String phone;           // телефон
