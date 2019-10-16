@@ -10,14 +10,14 @@ import org.jsoup.select.Elements;
 
 
 public class Parser {
-    private static final String LINC = "https://gromada.org.ua/dijuchi-gromadi/?p=";
-    private static final String FILE = "/Users/samuilolegovich/Desktop/parse.csv";
-    private static final String CLASS_NAME = "one_gromada";
-    private static final String ATTRIBUTE_KEY = "href";
-    private static final String TAG = "a";
+    private static final String LINC            = "https://gromada.org.ua/dijuchi-gromadi/?p=";
+    private static final String FILE            = "/Users/samuilolegovich/Desktop/parse.csv";
+    private static final String CLASS_NAME      = "one_gromada";
+    private static final String ATTRIBUTE_KEY   = "href";
+    private static final String TAG             = "a";
 
-    private static final int MAX = 58;
-    private static final int MIN = 1;
+    private static final int MAX                = 58;
+    private static final int MIN                = 1;
 
     private static List<Data> listParseData;
     private static Map<String, String> map;

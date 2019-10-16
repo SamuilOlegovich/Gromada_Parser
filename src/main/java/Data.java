@@ -1,8 +1,8 @@
 public class Data {
-    private String area;                // район
-    private String region;              // область
-    private Address address;            // адресс и т д
-    private String community;           // громада
+    private String area;                  // район
+    private String region;                // область
+    private Address address;              // адресс и т д
+    private String community;             // громада
     private Person headOfTheСommunity;    // глава громады
 
     public Data(String string, String linc) { this.parseString(string, linc); }
