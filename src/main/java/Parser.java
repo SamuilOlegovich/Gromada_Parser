@@ -1,4 +1,3 @@
-import org.jsoup.Connection;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
@@ -8,23 +7,19 @@ import java.util.*;
 import org.jsoup.Jsoup;
 import org.jsoup.select.Elements;
 
-
 public class Parser {
-    private static final String LINC            = "https://gromada.org.ua/dijuchi-gromadi/?p=";
-    private static final String FILE            = "/Users/samuilolegovich/Desktop/parse.csv";
-    private static final String CLASS_NAME      = "one_gromada";
-    private static final String ATTRIBUTE_KEY   = "href";
-    private static final String TAG             = "a";
+    private static final String URI = "https://gromada.org.ua/dijuchi-gromadi/?p=";
+    private static final String FILE = "/Users/samuilolegovich/Desktop/parse.csv";
+    private static final String CLASS_NAME = "one_gromada";
+    private static final String ATTRIBUTE_KEY = "href";
+    private static final String TAG = "a";
 
-    private static final int MAX                = 58;
-    private static final int MIN                = 1;
+    private static final int MAX = 58;
+    private static final int MIN = 1;
 
-    private static List<Data> listParseData;
-    private static Map<String, String> map;
-
-    public static void main(String args[]) throws FileNotFoundException, IOException {
-        map = parseLinc();
-        listParseData = parseString(map);
+    public static void main(String[] args) throws IOException {
+        Map<String, String> map = parseLinc();
+        List<Data> listParseData = parseString(map);
         outInfo(listParseData);
         listParseData.clear();
         map.clear();
@@ -34,7 +29,7 @@ public class Parser {
         Map<String, String> mapString = new HashMap<String, String>();
         for (int i = MIN; i <= MAX; i++) {
             try {
-                Document doc = Jsoup.connect(LINC + i).get();
+                Document doc = Jsoup.connect(URI + i).get();
                 for (Element card : doc.body().getElementsByClass(CLASS_NAME)) {
                     Elements links = card.getElementsByTag(TAG);
                     for (Element row : links) {
