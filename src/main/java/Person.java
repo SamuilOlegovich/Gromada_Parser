@@ -4,7 +4,9 @@ public class Person {
     private MiddleName middleName;
     private String acting; // исполняющий обязанности
 
-    public Person(String string) { this.parseString(string); }
+    public Person(String string) {
+        this.parseString(string);
+    }
 
     private void parseString(String string) {
         String[] strings = string.split(" Телефон: ");
