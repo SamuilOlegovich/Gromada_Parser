@@ -2,7 +2,7 @@ public class Person {
     private FirstName firstName;
     private LastName lastName;
     private MiddleName middleName;
-    private String acting; // исполняющий обязанности
+    private Acting acting;
 
     public Person(String string) {
         this.parseString(string);
@@ -15,13 +15,13 @@ public class Person {
             this.lastName = new LastName(strings1[0]);
             this.firstName = new FirstName(strings1[1]);
             this.middleName = new MiddleName(strings1[2]);
-            this.acting = "absent";
+            this.acting = new Acting("absent");
         } else {
             strings = string.split(" Секретар: ");
             this.middleName = null;
             this.lastName = null;
             this.firstName = null;
-            this.acting = strings[0];
+            this.acting = new Acting(strings[0]);
         }
     }
 
@@ -30,6 +30,6 @@ public class Person {
         if (acting.equals("absent")) {
             return String.format("%s, %s, %s", lastName.toString(), firstName.toString(), middleName.toString());
         }
-        return String.format("%s, %s, %s", acting, firstName.toString(), middleName.toString());
+        return String.format("%s, %s, %s", acting.toString(), firstName.toString(), middleName.toString());
     }
 }
