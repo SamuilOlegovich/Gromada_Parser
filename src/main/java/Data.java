@@ -5,7 +5,7 @@ public class Data {
     private String community; // громада
     private Person head;
 
-    public Data(String string, String linc) { this.parseString(string, linc); }
+    public Data(String rawData, String link) { this.parseString(rawData, link); }
 
     private void parseString(String string, String linc) {
         String[] strings = string.split(" Голова: ");
