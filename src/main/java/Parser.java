@@ -18,15 +18,13 @@ public class Parser {
     private static final int MIN = 1;
 
     public static void main(String[] args) throws IOException {
-        Map<String, String> map = parseLinc();
-        List<Data> listParseData = parseString(map);
-        outInfo(listParseData);
-        listParseData.clear();
-        map.clear();
+        List<Data> parsed = parseData();
+        outInfo(parsed);
+        parsed.clear();
     }
 
-    private static Map<String, String> parseLinc() {
-        Map<String, String> mapString = new HashMap<String, String>();
+    private static List<Data> parseData() {
+        List<Data> parsed = new ArrayList<Data>();
         for (int i = MIN; i <= MAX; i++) {
             try {
                 Document doc = Jsoup.connect(URI + i).get();
@@ -34,22 +32,12 @@ public class Parser {
                     Elements links = card.getElementsByTag(TAG);
                     for (Element row : links) {
                         String link = row.attr(ATTRIBUTE_KEY);
-                        mapString.put(card.text(), link);
+                        parsed.add(new Data(card.text(), link));
                     }
                 }
             } catch (IOException e) { e.printStackTrace(); }
         }
-        return mapString;
-    }
-
-    private static List<Data> parseString(Map<String, String> mapStrings) {
-        List<Data> listParse = new ArrayList<Data>();
-        for (Map.Entry<String, String> entry : mapStrings.entrySet()) {
-            String key = entry.getKey();
-            String value = entry.getValue();
-            listParse.add(new Data(key, value));
-        }
-        return listParse;
+        return parsed;
     }
 
     private static void outInfo(List<Data> parseData) throws FileNotFoundException, IOException {
