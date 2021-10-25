@@ -4,25 +4,29 @@ public class Person {
     private MiddleName middleName;
     private Acting acting;
 
-    public Person(String string) {
-        this.parseString(string);
+    public Person(String firstName, String lastName, String middleName, String actingAs) {
+        this.firstName = new FirstName(firstName);
+        this.lastName = new LastName(lastName);
+        this.middleName = new MiddleName(middleName);
+        this.acting = new Acting(actingAs);
     }
 
-    private void parseString(String string) {
+    public Person(String actingAs) {
+        this.firstName = null;
+        this.lastName = null;
+        this.middleName = null;
+        this.actingAs = new Acting(actingAs);
+    }
+
+    public static Person fromString(String string) {
         String[] strings = string.split(" Телефон: ");
-        String[] strings1 = strings[0].split(" ");
-        if (strings1.length == 3) {
-            this.lastName = new LastName(strings1[0]);
-            this.firstName = new FirstName(strings1[1]);
-            this.middleName = new MiddleName(strings1[2]);
-            this.acting = new Acting("absent");
-        } else {
-            strings = string.split(" Секретар: ");
-            this.middleName = null;
-            this.lastName = null;
-            this.firstName = null;
-            this.acting = new Acting(strings[0]);
+        String[] nameParts = strings[0].split(" ");
+        if (nameParts.length == 3) {
+            return new Person(nameParts[0], nameParts[1], nameParts[2], Acting.ABSENT);
         }
+
+        strings = string.split(" Секретар: ");
+        return new Person(strings[0]);
     }
 
     @Override

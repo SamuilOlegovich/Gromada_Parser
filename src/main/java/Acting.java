@@ -1,4 +1,6 @@
 final class Acting {
+    public static final String ABSENT = "absent";
+
     private String value;
 
     public Acting(String value) {
